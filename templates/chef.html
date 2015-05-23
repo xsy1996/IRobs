@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}当前任务{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<table class="table table-condensed">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>菜品</th>
+							<th>地址</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for dish in dish_dic %}
+						<tr>
+							<td>{{ forloop.counter }}</td>
+							<td>{{ dish.key }}</td>
+							<td>
+								{%for x in dishdic.dish%}
+                                <p>{{dishdic.dish.x}}</p>
+								{%end if%}
+							</td>
+						</tr>
+						{% empty %}
+						<tr>
+							<td>暂无</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

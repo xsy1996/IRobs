@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="col-md-2">
+				<div class="list-group">
+                <a href="/manager_user/" class="list-group-item active">
+    			<h4 class="list-group-item-heading">用户管理</h4>
+    			<p class="list-group-item-text">管理用户权限</p>
+  				</a>
+				</div>
+				<div class="list-group">
+                <a href="/manager_table/" class="list-group-item active">
+    			<h4 class="list-group-item-heading">桌台管理</h4>
+    			<p class="list-group-item-text">管理桌台位置映射</p>
+  				</a>
+				</div>
+				<div class="list-group">
+                <a href="/manager_menu/" class="list-group-item active">
+    			<h4 class="list-group-item-heading">菜单管理</h4>
+    			<p class="list-group-item-text">管理，维护，更新菜单</p>
+  				</a>
+				</div>
+			</div>
+		<div class="col-md-9 col-md-offset-1">
+			{% block title %}{% endblock %}
+		</div>
+	</div>
+</div>
+{% endblock %}

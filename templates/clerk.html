@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}收银台{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="col-md-8 col-md-offset-2">
+					<form role="form" method="post" name="search_form">
+						{% csrf_token %}
+						<input type="search" class="form-control" name="keywords" placeholder="Enter keywords to search" id="id_search_input" onkeyup="whenkeyup()" autofocus="True">
+					</form>
+			</div>
+			<script type="text/javascript">
+					function whenkeyup () {
+						var oldvalue = document.getElementById('id_search_input').value
+						setTimeout(function(){
+							var newvalue = document.getElementById('id_search_input').value
+							if (oldvalue == newvalue) {
+								document.search_form.submit();
+							};
+						},1500);
+					}
+			</script>
+			<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>菜品</th>
+							<th>数量</th>
+							<th>单价</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for dish in dish_list %}
+						<tr>
+							<td>{{ forloop.counter }}</td>
+							<td>{{ dish.name }}</td>
+							<td>{{ dish.count }}</td>
+							<td>{{ book.price|floatformat:2 }}</td>
+						</tr>
+						{% empty %}
+						<tr>
+							<td>暂无账单</td>
+						</tr>
+						{% endfor %}
+						<tr>总价:</tr>
+						<tr>{{sum|floatformat:2}}</tr>
+					</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+
+			
