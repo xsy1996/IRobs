@@ -15,5 +15,6 @@ urlpatterns = [
  	url(r'^details/$',views.details.as_view()),
     url(r'^chef/$',views.chef.as_view()),
     url(r'^clerk/$',views.clerk.as_view()),
+    url(r'^manager/$',views.manager.as_view()),
        
 ]
